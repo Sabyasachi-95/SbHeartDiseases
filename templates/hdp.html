@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Predictor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/main1.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="{{ url_for('hdpredict') }}" method="POST">
+				<span class="contact100-form-title">
+					HEART-DISEASES PREDICTOR
+				</span>
+				<span class="contact100-form-title"><h5>A Machine Learning Web App, Built with Flask, Deployed using python</h5></span>
+
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<h4>Your Name</h4>
+					<input class="input100" type="text" name="na" id="na" placeholder="Enter your name">
+					<span class="focus-input100"></span>
+                </div>
+                
+                <div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Age</h4>
+					<input class="input100" type="text" name="age" id="ag" placeholder="Age (years) eg. 34">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+				   <h4>Sex</h4>
+					<select class="form-control" id="sex"  name="sex" required>
+					  <option disabled selected value> -- Select an Option -- </option>
+					  <option value = "0">Male</option>
+					  <option value = "1">Female</option>
+					</select>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Chest Pain Type </h4>
+					<select class="form-control" id="cp" name = "cp" required>
+					 <option disabled selected value> -- Select an Option -- </option>
+					 <option value = "0">Typical Angina</option>
+					 <option value = "1">Atypical Angina</option>
+					 <option value = "2">Non-anginal Pain</option>
+					 <option value = "3">Asymptomatic</option>
+					</select>	 
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Resting Blood Pressure in mm Hg</h4>
+					<label for="trestbps">Resting Blood Pressure in mm Hg</label>
+					<input type="number" class="form-control" id="trestbps" name="trestbps"  required>
+				  </div>
+
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Cholesterol</h4>
+					<input class="input100" type="text" name="chol" id="chol" placeholder="Number of cholesterol eg. 204">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Fasting Blood Suger</h4>
+					<label for="fbs">Fasting Blood Sugar > 120 mg/dl</label>
+							<select class="form-control" id="fbs" name="fbs" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "0">False</option>
+							  <option value = "1">True</option>
+							</select>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Resting Electrocardiographic</h4>
+					<label for="restecg">Resting ECG Results </label>
+								<select class="form-control" id="restecg" name="restecg" required>
+								  <option disabled selected value> -- Select an Option -- </option>
+								  <option value = "0">Normal</option>
+								  <option value = "1">Having ST-T wave abnormality  </option>
+								  <option value = "2"> Probable or definite left ventricular hypertrophy  </option>
+								</select>
+					
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Maximum Heartrate Achived</h4>
+					<input class="input100" type="text" name="thalach" id="thalach" placeholder="Number of thalach eg. 150">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Exercise Include Angina</h4>
+					<label for="exang">Exercise Induced Angina </label>
+								<select class="form-control" id="exang" name="exang" required>
+								  <option disabled selected value> -- Select an Option -- </option>
+								  <option value = "0">No</option>
+								  <option value = "1">Yes</option>
+								</select>
+					
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Slope</h4>
+					<label for="slope">Slope of the Peak Exercise ST Segment </label>
+							<select class="form-control" id="slope" name="slope" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "0">Upsloping</option>
+							  <option value = "1">Flat</option>
+							  <option value = "2">Downsloping</option>
+
+							</select>
+							<span class="focus-input100"></span>
+				</div>	
+				<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+					<h4>Number of Vessels Colored by Flourosopy</h4>
+					<label for="ca">Number of Vessels Colored by Flourosopy</label>
+							<select class="form-control" id="ca" name = "ca" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "0">0</option>
+							  <option value = "1">1</option>
+							  <option value = "2">2</option>
+							  <option value = "3">3</option>
+							</select>
+					
+					<span class="focus-input100"></span>
+				</div>		
+						<div class="wrap-input100 validate-input" data-validate = "Valid value is required">
+								<h4>Thalassemia</h4>
+								<label for="thal">Thalassemia</label>
+								<select class="form-control" id="thal" name = "thal" required>
+								  <option disabled selected value> -- Select an Option -- </option>
+								  <option value = "3">Normal</option>
+								  <option value = "6">Fixed defect</option>
+								  <option value = "7">Reversable defect</option>
+								</select>
+								<span class="focus-input100"></span>
+						</div>
+					
+					<span class="focus-input100"></span>
+				</div>
+				
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Predict
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+            
+
+				 
+
+			
+
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="static/js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>
